@@ -5,7 +5,7 @@ import { FaSquareInstagram } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-t dark:border-gray-700 pt-10 pb-6 px-4 md:px-20">
+    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-t dark:border-gray-700 pt-10 pb-6 px-4 md:px-20 mt-5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
 
         {/* Branding */}
