@@ -5,6 +5,9 @@ import Home from '../Pages/Home/Home';
 import AuthLayout from '../Layout/AuthLayout';
 import Login from '../Pages/Home/login/Login';
 import Register from '../Pages/Register/Register';
+import CreateAssignment from '../Pages/CreateAssignment/CreateAssignment';
+import AllAssignments from '../Pages/AllAssignments/AllAssignments';
+import ViewAssignment from '../Pages/AllAssignments/ViewAssignment';
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -13,6 +16,20 @@ export const router = createBrowserRouter([
     {
        index:true,
        Component:Home
+    },
+    {
+      path:'/createAssignment',
+      Component:CreateAssignment
+    },
+    {
+      path:'/assignments',
+      loader:()=>fetch('http://localhost:3000/assignments'),
+      Component:AllAssignments
+    },
+    {
+      path:"/assignments/:id",
+        loader: ({ params }) => fetch(`http://localhost:3000/assignments/${params.id}`),
+      Component:ViewAssignment
     }
    ]
   },
