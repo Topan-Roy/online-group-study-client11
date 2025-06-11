@@ -5,10 +5,12 @@ import Home from '../Pages/Home/Home';
 import AuthLayout from '../Layout/AuthLayout';
 import Login from '../Pages/Home/login/Login';
 import Register from '../Pages/Register/Register';
-import CreateAssignment from '../Pages/CreateAssignment/CreateAssignment';
 import AllAssignments from '../Pages/AllAssignments/AllAssignments';
+import PrivetRoute from '../Layout/PrivetRoute';
+import CreateAssignment from '../Pages/CreateAssignment/CreateAssignment';
 import ViewAssignment from '../Pages/AllAssignments/ViewAssignment';
 import UpdateAssignment from '../Pages/AllAssignments/UpdateAssignment';
+import NotFoundPage from '../Pages/NotFoundPage/NotFoundPage';
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/createAssignment',
-        Component: CreateAssignment
+       element:<PrivetRoute><CreateAssignment></CreateAssignment></PrivetRoute>
       },
       {
         path: '/assignments',
@@ -30,13 +32,13 @@ export const router = createBrowserRouter([
       {
         path: "/assignments/:id",
         loader: ({ params }) => fetch(`http://localhost:3000/assignments/${params.id}`),
-        Component: ViewAssignment
+        element:<PrivetRoute><ViewAssignment></ViewAssignment></PrivetRoute>
       },
       {
         path: '/assignment/update/:id',
-       Component:UpdateAssignment,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/assignments/${params.id}`),
+        element:<PrivetRoute><UpdateAssignment></UpdateAssignment></PrivetRoute>
       }
     ]
   },
@@ -54,8 +56,8 @@ export const router = createBrowserRouter([
       }
     ]
   },
-  //  {
-  //   path: "/*",
-  //   Component:NotFoundPage
-  // },
+   {
+    path: "/*",
+    Component:NotFoundPage
+  },
 ]);

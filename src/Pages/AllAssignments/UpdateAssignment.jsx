@@ -15,7 +15,7 @@ const UpdateAssignment = () => {
     const [dueDate, setDueDate] = useState(new Date(assignmentData.dueDate));
     const [unauthorized, setUnauthorized] = useState(false);
 
-    // ✅ Unauthorized check
+ 
     useEffect(() => {
         if (assignmentData.email !== user?.email) {
             setUnauthorized(true);
