@@ -1,5 +1,5 @@
 import React from 'react';
-import {createBrowserRouter,} from "react-router";
+import { createBrowserRouter, } from "react-router";
 import RootLayout from '../Layout/RootLayout';
 import Home from '../Pages/Home/Home';
 import AuthLayout from '../Layout/AuthLayout';
@@ -8,47 +8,54 @@ import Register from '../Pages/Register/Register';
 import CreateAssignment from '../Pages/CreateAssignment/CreateAssignment';
 import AllAssignments from '../Pages/AllAssignments/AllAssignments';
 import ViewAssignment from '../Pages/AllAssignments/ViewAssignment';
+import UpdateAssignment from '../Pages/AllAssignments/UpdateAssignment';
 export const router = createBrowserRouter([
   {
     path: "/",
-   Component:RootLayout,
-   children:[
-    {
-       index:true,
-       Component:Home
-    },
-    {
-      path:'/createAssignment',
-      Component:CreateAssignment
-    },
-    {
-      path:'/assignments',
-      loader:()=>fetch('http://localhost:3000/assignments'),
-      Component:AllAssignments
-    },
-    {
-      path:"/assignments/:id",
+    Component: RootLayout,
+    children: [
+      {
+        index: true,
+        Component: Home
+      },
+      {
+        path: '/createAssignment',
+        Component: CreateAssignment
+      },
+      {
+        path: '/assignments',
+        loader: () => fetch('http://localhost:3000/assignments'),
+        Component: AllAssignments
+      },
+      {
+        path: "/assignments/:id",
         loader: ({ params }) => fetch(`http://localhost:3000/assignments/${params.id}`),
-      Component:ViewAssignment
-    }
-   ]
+        Component: ViewAssignment
+      },
+      {
+        path: '/assignment/update/:id',
+       Component:UpdateAssignment,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/assignments/${params.id}`),
+      }
+    ]
   },
   {
-      path:"/auth",
-      Component:AuthLayout,
-      children:[
-        {
-          path:'/auth/login',
-          Component:Login
-        },
-        {
-          path:'/auth/register',
-          Component:Register
-        }
-      ]
-    },
-    //  {
-    //   path: "/*",
-    //   Component:NotFoundPage
-    // },
+    path: "/auth",
+    Component: AuthLayout,
+    children: [
+      {
+        path: '/auth/login',
+        Component: Login
+      },
+      {
+        path: '/auth/register',
+        Component: Register
+      }
+    ]
+  },
+  //  {
+  //   path: "/*",
+  //   Component:NotFoundPage
+  // },
 ]);
