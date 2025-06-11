@@ -12,6 +12,7 @@ import ViewAssignment from '../Pages/AllAssignments/ViewAssignment';
 import UpdateAssignment from '../Pages/AllAssignments/UpdateAssignment';
 import NotFoundPage from '../Pages/NotFoundPage/NotFoundPage';
 import MyAssignments from '../Pages/Myassignment/MyAssignments';
+import PendingAssignments from '../Pages/PendingAssignments/PendingAssignments';
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path:'/my-assignments',
         element:<PrivetRoute><MyAssignments></MyAssignments></PrivetRoute>
+      },
+      {
+        path:'/pending-assignments',
+        element:<PrivetRoute><PendingAssignments></PendingAssignments></PrivetRoute>
       }
     ]
   },

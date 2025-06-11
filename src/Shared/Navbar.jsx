@@ -49,7 +49,7 @@ const Navbar = () => {
                 <>
                     <li>
                         <NavLink
-                            to="/pending"
+                            to="/pending-assignments"
                             className={({ isActive }) =>
                                 isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
                             }
