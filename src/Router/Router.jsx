@@ -11,6 +11,7 @@ import CreateAssignment from '../Pages/CreateAssignment/CreateAssignment';
 import ViewAssignment from '../Pages/AllAssignments/ViewAssignment';
 import UpdateAssignment from '../Pages/AllAssignments/UpdateAssignment';
 import NotFoundPage from '../Pages/NotFoundPage/NotFoundPage';
+import MyAssignments from '../Pages/Myassignment/MyAssignments';
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:3000/assignments/${params.id}`),
         element:<PrivetRoute><UpdateAssignment></UpdateAssignment></PrivetRoute>
+      },
+      {
+        path:'/my-assignments',
+        element:<PrivetRoute><MyAssignments></MyAssignments></PrivetRoute>
       }
     ]
   },
