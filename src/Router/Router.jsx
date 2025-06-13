@@ -13,6 +13,7 @@ import UpdateAssignment from '../Pages/AllAssignments/UpdateAssignment';
 import NotFoundPage from '../Pages/NotFoundPage/NotFoundPage';
 import MyAssignments from '../Pages/Myassignment/MyAssignments';
 import PendingAssignments from '../Pages/PendingAssignments/PendingAssignments';
+import Loading from '../Pages/Loading/Loading';
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -29,7 +30,8 @@ export const router = createBrowserRouter([
       {
         path: '/assignments',
         loader: () => fetch('http://localhost:3000/assignments'),
-        Component: AllAssignments
+        Component: AllAssignments,
+         hydrateFallbackElement:<Loading></Loading>
       },
       {
         path: "/assignments/:id",
