@@ -20,7 +20,7 @@ const Assignments = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await axios.delete(`http://localhost:3000/assignments/${id}`, {
+                    const response = await axios.delete(`https://online-group-study-assignment-serve.vercel.app/assignments/${id}`, {
                         params: { email: user.email },
                     });
                     const data = response.data;

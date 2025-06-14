@@ -36,7 +36,7 @@ const UpdateAssignment = () => {
         updatedAssignment.email = user.email;
 
         try {
-            const res = await axios.put(`http://localhost:3000/assignments/${assignmentData._id}`, updatedAssignment);
+            const res = await axios.put(`https://online-group-study-assignment-serve.vercel.app/assignments/${assignmentData._id}`, updatedAssignment);
             if (res.data.modifiedCount > 0 || res.data.acknowledged) {
                 Swal.fire('Success', 'Assignment updated successfully!', 'success');
                 navigate('/assignments');

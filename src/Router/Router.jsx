@@ -29,19 +29,19 @@ export const router = createBrowserRouter([
       },
       {
         path: '/assignments',
-        loader: () => fetch('http://localhost:3000/assignments'),
+        loader: () => fetch('https://online-group-study-assignment-serve.vercel.app/assignments'),
         Component: AllAssignments,
          hydrateFallbackElement:<Loading></Loading>
       },
       {
         path: "/assignments/:id",
-        loader: ({ params }) => fetch(`http://localhost:3000/assignments/${params.id}`),
+        loader: ({ params }) => fetch(`https://online-group-study-assignment-serve.vercel.app/assignments/${params.id}`),
         element:<PrivetRoute><ViewAssignment></ViewAssignment></PrivetRoute>
       },
       {
         path: '/assignment/update/:id',
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/assignments/${params.id}`),
+          fetch(`https://online-group-study-assignment-serve.vercel.app/assignments/${params.id}`),
         element:<PrivetRoute><UpdateAssignment></UpdateAssignment></PrivetRoute>
       },
       {

@@ -9,7 +9,7 @@ const PendingAssignments = () => {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/submissions/pending')
+    axios.get('https://online-group-study-assignment-serve.vercel.app/submissions/pending')
       .then(res => {
         const others = res.data.filter(sub => sub.email !== user.email);
         setPending(others);

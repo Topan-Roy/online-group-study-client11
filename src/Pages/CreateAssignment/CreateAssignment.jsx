@@ -21,7 +21,7 @@ const CreateAssignment = () => {
         assignment.dueDate = dueDate.toISOString();
 
         try {
-            const response = await axios.post('http://localhost:3000/assignments', assignment);
+            const response = await axios.post('https://online-group-study-assignment-serve.vercel.app/assignments', assignment);
             const data = response.data;
 
             if (data.insertedId) {

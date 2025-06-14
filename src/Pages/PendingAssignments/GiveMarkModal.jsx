@@ -9,7 +9,7 @@ const GiveMarkModal = ({ submission, onClose }) => {
     const feedback = form.feedback.value;
 
     try {
-      await axios.put(`http://localhost:3000/submissions/${submission._id}/mark`, {
+      await axios.put(`https://online-group-study-assignment-serve.vercel.app/submissions/${submission._id}/mark`, {
         obtainedMarks,
         feedback,
       });

@@ -27,7 +27,7 @@ const ViewAssignment = () => {
   };
 
     try {
-      const res = await axios.post('http://localhost:3000/submissions', submissionData);
+      const res = await axios.post('https://online-group-study-assignment-serve.vercel.app/submissions', submissionData);
       if (res.data.insertedId) {
         Swal.fire('Submitted!', 'Your assignment is pending for review.', 'success');
         setShowModal(false);
