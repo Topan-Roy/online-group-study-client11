@@ -1,12 +1,64 @@
-# React + Vite
+# 📘 Online Group Study Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive full-stack group study platform that allows students to create, manage, submit, and evaluate assignments in a collaborative way.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Live Website
 
-## Expanding the ESLint configuration
+🔗 [Live Demo](https://online-group-study-f26a8.web.app)  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Core Features
+
+- 🔐 Firebase Authentication (Email & Google)
+- 📝 Assignment Creation (Title, Description, Difficulty, Deadline, Marks, Thumbnail)
+- 📤 Assignment Submission (Docs Link, Note)
+- ⏳ Pending Assignment Review System
+- ✅ Marking Submissions with Obtained Marks & Feedback
+- 👤 Private Routing Based on Login
+- 🌙 Light/Dark Theme Toggle
+- 📅 Date Picker Integration
+- 🎉 Toast & Alert Notifications for Better UX
+- ⚡ Smooth UI Animations with Framer Motion
+
+---
+
+## 🛠️ Tech Stack
+
+| Frontend         | Backend (Assumed)   |
+| ---------------- | ------------------- |
+| React 19         | Express.js          |
+| Vite             | MongoDB             |
+| Tailwind CSS 4   | JWT Auth            |
+| DaisyUI          | Mongoose            |
+| Firebase         | CORS & Middleware   |
+| React Router 7   |                     |
+| SweetAlert2      |                     |
+| Framer Motion    |                     |
+| React Hot Toast  |                     |
+
+---
+
+## 📦 Installation
+
+### 🔧 Prerequisites
+
+- Node.js & npm installed
+- Firebase Project configured
+
+### 🧪 Setup
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-Topan-Roy
+
+# 2. Navigate into the project directory
+cd online-group-study-assignment
+
+# 3. Install dependencies
+npm install
+
+# 4. Start development server
+npm run dev

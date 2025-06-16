@@ -38,15 +38,12 @@ const Banner = () => {
 
                 {/* Right Image with animation */}
                 <motion.img
-                    src="https://i.ibb.co/NnQCg1Ch/4221400.png"
+                    src="https://i.ibb.co/qYWpQz3m/image.jpg"
                     alt="Study Illustration"
-                    className="w-full max-w-md mx-auto"
-                    animate={{ rotate: 360 }}
-                    transition={{
-                        repeat: Infinity,
-                        duration: 20,
-                        ease: "linear",
-                    }}
+                    className="w-full rounded-full max-w-md mx-auto"s
+                    animate={{ scale: 0.5 }}
+                    whileHover={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 150, damping: 20 }}
                 />
             </div>
         </section>

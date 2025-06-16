@@ -1,25 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 
 const NotFoundPage = () => {
-    return (
-        <div>
-            <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-yellow-100 to-green-100 dark:from-gray-900 dark:to-gray-800 px-6">
-      <div className="text-center">
-        <h1 className="text-[8rem] font-extrabold text-green-600 dark:text-green-400">404</h1>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Oops! Page Not Found</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-          The mango you're looking for might have fallen off the tree 🍃
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-yellow-50 to-green-100 dark:from-gray-900 dark:to-gray-800 px-4">
+      <div className="text-center space-y-6">
+        <h1 className="text-[100px] md:text-[140px] font-extrabold text-green-600 dark:text-green-400">
+          404
+        </h1>
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-800 dark:text-white">
+          Page Not Found
+        </h2>
+        <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-md mx-auto">
+          Sorry, the page you are looking for does not exist.
+          <br className="hidden md:block" />
+          (Maybe it went for a group study 📖)
         </p>
-        <a
-          href="/"
-          className="inline-block bg-green-600 text-white px-6 py-3 rounded-xl text-lg font-semibold hover:bg-green-700 transition"
+        <Link
+          to="/"
+          className="inline-block bg-green-600 text-white px-6 py-3 rounded-xl text-lg font-semibold hover:bg-green-700 transition duration-300"
         >
-          🍋 Go Back Home
-        </a>
+          ✎ Go Back Home
+        </Link>
       </div>
     </div>
-        </div>
-    );
+  );
 };
 
 export default NotFoundPage;

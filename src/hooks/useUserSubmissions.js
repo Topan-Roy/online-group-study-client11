@@ -1,4 +1,3 @@
-// src/hooks/useUserSubmissions.js
 import { useEffect, useState } from 'react';
 import useSubmissionApi from '../API/useApplicationApi';
 

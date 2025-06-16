@@ -118,7 +118,7 @@ const Navbar = () => {
                                 <div className="px-4 py-2 border-b border-gray-600">
                                     {user.displayName}
                                 </div>
-                                {/* You can add more dropdown items here if you want */}
+                                
                             </div>
                         </div>
                     ) : (

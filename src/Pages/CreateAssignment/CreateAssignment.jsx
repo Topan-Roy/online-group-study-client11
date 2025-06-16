@@ -3,10 +3,8 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-
 const CreateAssignment = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -40,14 +38,6 @@ const CreateAssignment = () => {
             console.error('Error creating assignment:', error);
         }
     };
-
-    //   if (!user) {
-    //     return (
-    //       <p className="text-center text-red-500 text-xl mt-20">
-    //         Please login to create an assignment.
-    //       </p>
-    //     );
-    //   }
 
     return (
         <div className="mt-5 bg-gray-100 dark:bg-gray-300 dark:text-gray-800 rounded-2xl">
