@@ -13,18 +13,18 @@ const ViewAssignment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-  const docLink = form.docLink.value;
-  const note = form.note.value;
+    const docLink = form.docLink.value;
+    const note = form.note.value;
 
-  const submissionData = {
-    assignmentId: assignment._id,
-    assignmentTitle: assignment.title,       // ✅ Include title
-    totalMarks: assignment.marks,       // ✅ Include total marks
-    email: user.email,
-    status: 'pending',                       // ✅ Default status
-    docLink,
-    note,
-  };
+    const submissionData = {
+      assignmentId: assignment._id,
+      assignmentTitle: assignment.title,
+      totalMarks: assignment.marks,
+      email: user.email,
+      status: 'pending',
+      docLink,
+      note,
+    };
 
     try {
       const res = await axios.post('https://online-group-study-assignment-serve.vercel.app/submissions', submissionData);
@@ -41,32 +41,77 @@ const ViewAssignment = () => {
   };
 
   return (
-    <div className="p-6 max-w-3xl mx-auto bg-white dark:bg-gray-800 dark:text-white rounded-xl shadow space-y-6">
-      <img src={assignment.photo} alt={assignment.title} className="rounded w-full h-64 object-cover" />
-      <h2 className="text-3xl font-bold">{assignment.title}</h2>
-      <p><span className='text-xl font-semibold'>Marks:</span> {assignment.marks}</p>
-      <p><span className='text-xl font-semibold'>Difficulty:</span> {assignment.difficulty}</p>
-      <p><span className='text-xl font-semibold'>Due Date:</span> {new Date(assignment.dueDate).toLocaleDateString()}</p>
-      <p className="mt-4"><span className='text-xl font-semibold'>Description :</span>{assignment.description}</p>
-      <div className="sm:col-span-2">
-          <h3 className="font-semibold text-lg mb-1">Created By</h3>
-          <p className="text-sm">{assignment.name} ({assignment.email})</p>
+    <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 dark:text-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-2xl duration-300">
+
+      {/* Image */}
+      <div className="relative">
+        <img
+          src={assignment.photo}
+          alt={assignment.title}
+          className="w-full h-72 object-cover"
+        />
+        {/* Difficulty Badge */}
+        <span
+          className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold shadow-lg 
+        ${assignment.difficulty.toLowerCase() === "hard" ? "bg-red-500 text-white" :
+              assignment.difficulty.toLowerCase() === "medium" ? "bg-yellow-500 text-white" :
+                "bg-green-500 text-white"}`}
+        >
+          {assignment.difficulty}
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 space-y-4">
+
+        {/* Title */}
+        <h2 className="text-3xl font-bold border-b-2 border-blue-500 pb-2">
+          {assignment.title}
+        </h2>
+
+        {/* Marks & Due Date */}
+        <div className="flex flex-wrap gap-4">
+          <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium shadow">
+            Marks: {assignment.marks}
+          </span>
+          <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium shadow">
+            Due: {new Date(assignment.dueDate).toLocaleDateString()}
+          </span>
         </div>
-       <div className=" flex">
-         <button
-                onClick={() => navigate("/assignments")}
-                className=" text-3xl font-extrabold p-2 m-2"
-            >
-                ← 
-            </button>
-      <button
-        onClick={() => setShowModal(true)}
-        className="btn btn-primary mt-4"
-      >
-        Take Assignment
-      </button>
-       </div>
-        
+
+        {/* Description */}
+        <p className="leading-relaxed">
+          <span className="font-semibold text-lg">Description:</span> {assignment.description}
+        </p>
+
+        {/* Creator Info */}
+        <div className="pt-4 border-t border-gray-300 dark:border-gray-700">
+          <h3 className="font-semibold text-lg mb-1 text-blue-500">Created By</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {assignment.name} ({assignment.email})
+          </p>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex items-center gap-4 pt-4">
+          <button
+            onClick={() => navigate("/assignments")}
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+          >
+            ←
+          </button>
+
+          <button
+            onClick={() => setShowModal(true)}
+            className="px-5 py-2 bg-gradient-to-r from-green-400 to-green-600 text-white rounded-lg shadow hover:from-green-500 hover:to-green-700 transition"
+          >
+            Take Assignment
+          </button>
+        </div>
+      </div>
+
+
+
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -99,7 +144,7 @@ const ViewAssignment = () => {
                   placeholder="Write a short note..."
                 ></textarea>
               </div>
-              
+
               <input
                 type="submit"
                 className="btn bg-green-600 text-white w-full hover:bg-green-700 transition rounded py-2"

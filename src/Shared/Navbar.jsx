@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 import { useDarkMode } from '../Provider/ThemeContext';
@@ -10,6 +9,7 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const { darkmode, setDarkMode } = useDarkMode();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const handleLogOut = () => {
         logOut()
@@ -25,22 +25,16 @@ const Navbar = () => {
     const links = (
         <>
             <li>
-                <NavLink
-                    to="/"
-                    className={({ isActive }) =>
-                        isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-                    }
-                >
+                <NavLink to="/" className={({ isActive }) =>
+                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+                }>
                     Home
                 </NavLink>
             </li>
             <li>
-                <NavLink
-                    to="/assignments"
-                    className={({ isActive }) =>
-                        isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-                    }
-                >
+                <NavLink to="/assignments" className={({ isActive }) =>
+                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+                }>
                     Assignments
                 </NavLink>
             </li>
@@ -48,49 +42,32 @@ const Navbar = () => {
             {user && (
                 <>
                     <li>
-                        <NavLink
-                            to="/pending-assignments"
-                            className={({ isActive }) =>
-                                isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-                            }
-                        >
+                        <NavLink to="/pending-assignments" className={({ isActive }) =>
+                            isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+                        }>
                             Pending Assignments
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink
-                            to="/createAssignment"
-                            className={({ isActive }) =>
-                                isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-                            }
-                        >
+                    {/* <li>
+                        <NavLink to="/createAssignment" className={({ isActive }) =>
+                            isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+                        }>
                             Create Assignment
                         </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/my-assignments"
-                            className={({ isActive }) =>
-                                isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-                            }
-                        >
-                            My Attempts
-                        </NavLink>
-                    </li>
+                    </li> */}
                 </>
             )}
         </>
     );
 
     return (
-        <header className="bg-gray-100 dark:bg-gray-900 dark:text-white shadow-md">
+        <header className="bg-gray-100 sticky top-0 z-50 dark:bg-gray-900 dark:text-white shadow-md">
             <div className="px-4 md:px-20 flex justify-between items-center h-16">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-2">
                     <span className="text-3xl"><FaBookReader /></span>
                     <h1 className="text-2xl font-bold text-blue-600 dark:text-yellow-300">
-                        Study
-                        <span className="text-green-700 dark:text-green-300">Hub</span>
+                        Study<span className="text-green-700 dark:text-green-300">Hub</span>
                     </h1>
                 </Link>
 
@@ -100,26 +77,46 @@ const Navbar = () => {
                 {/* Right side */}
                 <div className="hidden lg:flex items-center gap-4 relative">
                     {user ? (
-                        <div className="relative group">
-                            <button
-                                onClick={handleLogOut}
-                                className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded"
-                            >
-                                <img
-                                    className="w-8 h-8 rounded-full"
-                                    src={user.photoURL || ''}
-                                    alt="User"
-                                />
-                                <span>Logout</span>
-                            </button>
+                        <div className="relative">
+                            <img
+                                className="w-10 h-10 rounded-full cursor-pointer border-2 border-transparent hover:border-blue-400"
+                                src={user.photoURL || 'https://i.ibb.co.com/LXQj5Fdb/istockphoto-1337144146-612x612.jpg'}
+                                alt="User"
+                                title={user.displayName}
+                                onClick={() => setDropdownOpen(!dropdownOpen)}
+                            />
 
-                            {/* Dropdown on hover */}
-                            <div className="absolute right-0 mt-2 w-48 bg-black bg-opacity-80 text-white text-sm rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-20">
-                                <div className="px-4 py-2 border-b border-gray-600">
-                                    {user.displayName}
+                            {/* Dropdown menu */}
+                            {dropdownOpen && (
+                                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden z-20">
+                                    <div className="px-4 py-2 border-b dark:border-gray-700">
+                                        <p className="text-sm font-medium dark:text-gray-300">{user.displayName}</p>
+                                    </div>
+                                    <Link
+                                        to="/my-assignments"
+                                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                        onClick={() => setDropdownOpen(false)}
+                                    >
+                                        My Attempts
+                                    </Link>
+                                    <Link
+                                        to="/createAssignment"
+                                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                        onClick={() => setDropdownOpen(false)}
+                                    >
+                                        Create Assignment
+                                    </Link>
+                                    <button
+                                        onClick={() => {
+                                            handleLogOut();
+                                            setDropdownOpen(false);
+                                        }}
+                                        className="w-full text-left px-4 py-2 hover:bg-red-100 dark:hover:bg-red-700 text-red-600 dark:text-red-400"
+                                    >
+                                        Logout
+                                    </button>
                                 </div>
-                                
-                            </div>
+                            )}
                         </div>
                     ) : (
                         <Link

@@ -25,32 +25,32 @@ export const router = createBrowserRouter([
       },
       {
         path: '/createAssignment',
-       element:<PrivetRoute><CreateAssignment></CreateAssignment></PrivetRoute>
+        element: <PrivetRoute><CreateAssignment></CreateAssignment></PrivetRoute>
       },
       {
         path: '/assignments',
         loader: () => fetch('https://online-group-study-assignment-serve.vercel.app/assignments'),
         Component: AllAssignments,
-         hydrateFallbackElement:<Loading></Loading>
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: "/assignments/:id",
         loader: ({ params }) => fetch(`https://online-group-study-assignment-serve.vercel.app/assignments/${params.id}`),
-        element:<PrivetRoute><ViewAssignment></ViewAssignment></PrivetRoute>
+        Component: ViewAssignment,
       },
       {
         path: '/assignment/update/:id',
         loader: ({ params }) =>
           fetch(`https://online-group-study-assignment-serve.vercel.app/assignments/${params.id}`),
-        element:<PrivetRoute><UpdateAssignment></UpdateAssignment></PrivetRoute>
+        element: <PrivetRoute><UpdateAssignment></UpdateAssignment></PrivetRoute>
       },
       {
-        path:'/my-assignments',
-        element:<PrivetRoute><MyAssignments></MyAssignments></PrivetRoute>
+        path: '/my-assignments',
+        element: <PrivetRoute><MyAssignments></MyAssignments></PrivetRoute>
       },
       {
-        path:'/pending-assignments',
-        element:<PrivetRoute><PendingAssignments></PendingAssignments></PrivetRoute>
+        path: '/pending-assignments',
+        element: <PrivetRoute><PendingAssignments></PendingAssignments></PrivetRoute>
       }
     ]
   },
@@ -68,8 +68,8 @@ export const router = createBrowserRouter([
       }
     ]
   },
-   {
+  {
     path: "/*",
-    Component:NotFoundPage
+    Component: NotFoundPage
   },
 ]);

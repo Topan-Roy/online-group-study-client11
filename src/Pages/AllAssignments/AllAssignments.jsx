@@ -39,7 +39,7 @@ const Assignments = () => {
     };
 
     return (
-        <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {assignments.map((assignment) => (
                 <div key={assignment._id} className="card bg-white dark:bg-gray-800  dark:text-white shadow-xl p-4 rounded-xl">
                     <img

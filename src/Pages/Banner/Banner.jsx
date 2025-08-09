@@ -1,53 +1,68 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router";
-import { motion } from "framer-motion";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+const slides = [
+  {
+    img: "https://i.ibb.co/qYWpQz3m/image.jpg",
+    title: "Join Master Group Study",
+    desc: "Collaborate & complete assignments together with StudyHub.",
+  },
+  {
+    img: "https://i.ibb.co.com/3YC1C0WB/depositphotos-38774981-stock-photo-group-of-students.webp",
+    title: "Share Knowledge",
+    desc: "Learn, discuss, and grow with your peers online.",
+  },
+  {
+    img: "https://i.ibb.co.com/TxhMhDY2/focused-study-group-stockcake.jpg",
+    title: "Track Your Progress",
+    desc: "Submit assignments, get feedback, and improve continuously.",
+  },
+];
 
 const Banner = () => {
-    return (
-        <section className="bg-gradient-to-r from-blue-100 via-white to-green-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 py-16 mt-5">
-            <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between">
+  return (
+    <div className="relative">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        loop
+        className="h-[65vh] md:h-[75vh]"
+      >
+        {slides.map((slide, idx) => (
+          <SwiperSlide key={idx}>
+            <div
+              className="h-full w-full bg-cover bg-center flex items-center justify-center relative"
+              style={{ backgroundImage: `url(${slide.img})` }}
+            >
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
 
-
-                <motion.div
-                    className="w-full md:w-1/2 text-center md:text-left space-y-6"
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
+              {/* Text content */}
+              <div className="relative z-10 text-center text-white px-6 max-w-3xl">
+                <h2 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-wide">
+                  {slide.title}
+                </h2>
+                <p className="text-lg md:text-2xl mb-6">{slide.desc}</p>
+                <Link
+                  to="/assignments"
+                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-xl shadow-lg transition transform hover:scale-105"
                 >
-                    <h1 className="text-4xl md:text-5xl font-bold text-blue-700 dark:text-yellow-300 leading-tight">
-                        Master Group  <motion.span
-                            animate={
-                                {
-                                    color: ['#ff5733', '#2efbec', '#ba2efb ', '#FF00FF', '#FF00FF', '#0000FF'],
-                                    transition: { duration: 2, repeat: Infinity }
-                                }
-                            }
-                        >Study</motion.span>  <br />
-                        with <span className="text-green-600 dark:text-green-300">StudyHub</span>
-                    </h1>
-                    <p className="text-gray-700 dark:text-gray-300 text-lg">
-                        Collaborate, share, and complete assignments easily in your online study group. Stay productive, together.
-                    </p>
-                    <Link
-                        to="/assignments"
-                        className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition"
-                    >
-                        Get Started
-                    </Link>
-                </motion.div>
-
-                {/* Right Image with animation */}
-                <motion.img
-                    src="https://i.ibb.co/qYWpQz3m/image.jpg"
-                    alt="Study Illustration"
-                    className="w-full rounded-full max-w-md mx-auto"s
-                    animate={{ scale: 0.5 }}
-                    whileHover={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 150, damping: 20 }}
-                />
+                  Get Started
+                </Link>
+              </div>
             </div>
-        </section>
-    );
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
 };
 
 export default Banner;
