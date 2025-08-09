@@ -40,7 +40,7 @@ const PendingAssignments = () => {
                   <td>{p.email}</td>
                   <td>
                     <button
-                      className="btn btn-sm btn-info"
+                      className="btn btn-sm btn-info bg-[#86e57d]"
                       onClick={() => setSelected(p)}
                     >
                       Give Mark

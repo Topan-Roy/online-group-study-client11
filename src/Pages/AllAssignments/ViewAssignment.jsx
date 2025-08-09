@@ -41,7 +41,7 @@ const ViewAssignment = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 dark:text-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-2xl duration-300">
+    <div className="max-w-3xl mx-auto mt-15 bg-white dark:bg-gray-800 dark:text-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-2xl duration-300">
 
       {/* Image */}
       <div className="relative">

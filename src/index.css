@@ -6,12 +6,12 @@ a.active{
   @custom-variant dark (&:where(.dark, .dark *));
 
   body {
-  background-color: white;
+  background-color: #fefdfb;
   color: black;
 }
 
 
 .dark body {
-  background-color: #6b7280;  
+  background-color: #403243;  
   color: #1f2937;             
 }

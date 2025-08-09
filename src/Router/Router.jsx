@@ -50,8 +50,10 @@ export const router = createBrowserRouter([
       },
       {
         path: '/pending-assignments',
-        element: <PrivetRoute><PendingAssignments></PendingAssignments></PrivetRoute>
-      }
+        Component:PendingAssignments
+      },
+      
+    
     ]
   },
   {

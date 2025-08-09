@@ -9,7 +9,7 @@ const MyAssignments = () => {
   if (loading) return <p className="text-center">Loading...</p>;
 
   return (
-   <div className="p-6 mt-5 rounded-2xl bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+   <div className="p-6 mt-15 rounded-2xl bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
       <h2 className="text-3xl font-bold mb-6 text-center">My Submitted Assignments</h2>
 
       {submissions.length === 0 ? (

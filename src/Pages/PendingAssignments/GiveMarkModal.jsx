@@ -54,13 +54,19 @@ const GiveMarkModal = ({ submission, onClose }) => {
             name="marks"
             placeholder="Enter marks"
             required
-            className="input bg-white input-bordered w-full"
+            className="textarea textarea-bordered w-full 
+             bg-white text-gray-900 
+             dark:bg-gray-800 dark:text-gray-100 
+             focus:outline-none focus:ring-2 focus:ring-[#82c940]"
           />
           <textarea
             name="feedback"
             placeholder="Feedback"
             required
-            className="textarea bg-white textarea-bordered w-full"
+            className="textarea textarea-bordered w-full 
+             bg-white text-gray-900 
+             dark:bg-gray-800 dark:text-gray-100 
+             focus:outline-none focus:ring-2 focus:ring-[#82c940]"
           />
           <div className="flex justify-end gap-2">
             <button type="button" className="btn btn-sm btn-ghost" onClick={onClose}>

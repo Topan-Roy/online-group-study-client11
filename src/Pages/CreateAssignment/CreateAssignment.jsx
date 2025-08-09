@@ -40,92 +40,98 @@ const CreateAssignment = () => {
     };
 
     return (
-        <div className="mt-5 bg-gray-100 dark:bg-gray-300 dark:text-gray-800 rounded-2xl">
-            <div className="p-12 text-center space-y-4">
-                <h1 className="text-5xl font-bold">Create New Assignment</h1>
-            </div>
+       <div className="mt-15 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 rounded-2xl shadow-lg">
+  <div className="p-12 text-center space-y-4">
+    <h1 className="text-5xl font-bold">Create New Assignment</h1>
+  </div>
 
-            <form onSubmit={handleCreateAssignment}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Title */}
-                    <fieldset className="fieldset bg-gray-300 dark:bg-gray-100 dark:text-gray-800 border-gray-500 rounded-box border p-4">
-                        <label className="label">Title</label>
-                        <input
-                            type="text"
-                            name="title"
-                            className="input bg-white w-full"
-                            placeholder="Assignment title"
-                            required
-                        />
-                    </fieldset>
+  <form onSubmit={handleCreateAssignment} className="px-6 pb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      
+      {/* Title */}
+      <fieldset className="fieldset bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl p-4">
+        <label className="label text-gray-700 dark:text-gray-200">Title</label>
+        <input
+          type="text"
+          name="title"
+          className="input w-full bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#82c940]"
+          placeholder="Assignment title"
+          required
+        />
+      </fieldset>
 
-                    {/* Image URL */}
-                    <fieldset className="fieldset bg-gray-300 dark:bg-gray-100 dark:text-gray-800 border-gray-500 rounded-box border p-4">
-                        <label className="label">Thumbnail Image URL</label>
-                        <input
-                            type="text"
-                            name="photo"
-                            className="input bg-white w-full"
-                            placeholder="Image URL"
-                            required
-                        />
-                    </fieldset>
+      {/* Image URL */}
+      <fieldset className="fieldset bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl p-4">
+        <label className="label text-gray-700 dark:text-gray-200">Thumbnail Image URL</label>
+        <input
+          type="text"
+          name="photo"
+          className="input w-full bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#82c940]"
+          placeholder="Image URL"
+          required
+        />
+      </fieldset>
 
-                    {/* Marks */}
-                    <fieldset className="fieldset bg-gray-300 dark:bg-gray-100 dark:text-gray-800 border-gray-500 rounded-box border p-4">
-                        <label className="label">Marks</label>
-                        <input
-                            type="number"
-                            name="marks"
-                            className="input bg-white w-full"
-                            placeholder="Total marks"
-                            required
-                        />
-                    </fieldset>
+      {/* Marks */}
+      <fieldset className="fieldset bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl p-4">
+        <label className="label text-gray-700 dark:text-gray-200">Marks</label>
+        <input
+          type="number"
+          name="marks"
+          className="input w-full bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#82c940]"
+          placeholder="Total marks"
+          required
+        />
+      </fieldset>
 
-                    {/* Difficulty */}
-                    <fieldset className="fieldset bg-gray-300 dark:bg-gray-100 dark:text-gray-800 border-gray-500 rounded-box border p-4">
-                        <label className="label">Difficulty Level</label>
-                        <select name="difficulty" className="select w-full bg-white" required>
-                            <option value="">Select Difficulty</option>
-                            <option value="easy">Easy</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
-                        </select>
-                    </fieldset>
+      {/* Difficulty */}
+      <fieldset className="fieldset bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl p-4">
+        <label className="label text-gray-700 dark:text-gray-200">Difficulty Level</label>
+        <select
+          name="difficulty"
+          className="select w-full bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#82c940]"
+          required
+        >
+          <option value="">Select Difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </fieldset>
 
-                    {/* Due Date */}
-                    <fieldset className="fieldset bg-gray-300 dark:bg-gray-100 dark:text-gray-800 border-gray-500 rounded-box border p-4">
-                        <label className="label">Due Date</label>
-                        <DatePicker
-                            selected={dueDate}
-                            onChange={(date) => setDueDate(date)}
-                            className="input w-full bg-white"
-                            dateFormat="yyyy-MM-dd"
-                            required
-                        />
-                    </fieldset>
-                </div>
+      {/* Due Date */}
+      <fieldset className="fieldset bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl p-4">
+        <label className="label text-gray-700 dark:text-gray-200">Due Date</label>
+        <DatePicker
+          selected={dueDate}
+          onChange={(date) => setDueDate(date)}
+          className="input w-full bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#82c940]"
+          dateFormat="yyyy-MM-dd"
+          required
+        />
+      </fieldset>
+    </div>
 
-                {/* Description */}
-                <fieldset className="fieldset bg-gray-300 dark:bg-gray-100 dark:text-gray-800 border-gray-500 rounded-box border p-4">
-                    <label className="label">Description</label>
-                    <textarea
-                        name="description"
-                        className="textarea w-full bg-white"
-                        placeholder="Assignment description"
-                        rows="4"
-                        required
-                    ></textarea>
-                </fieldset>
+    {/* Description */}
+    <fieldset className="fieldset bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl p-4 mt-4">
+      <label className="label text-gray-700 dark:text-gray-200">Description</label>
+      <textarea
+        name="description"
+        className="textarea w-full bg-white dark:bg-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#82c940]"
+        placeholder="Assignment description"
+        rows="4"
+        required
+      ></textarea>
+    </fieldset>
 
-                <input
-                    type="submit"
-                    className="btn btn-primary w-full mt-6"
-                    value="Create Assignment"
-                />
-            </form>
-        </div>
+    <input
+      type="submit"
+      className="btn w-full mt-6 bg-[#82c940] hover:bg-[#6bab34] text-white font-semibold"
+      value="Create Assignment"
+    />
+  </form>
+</div>
+
     );
 };
 

@@ -55,7 +55,7 @@ const UpdateAssignment = () => {
                 <p className="text-lg">Only the creator can update this assignment.</p>
                 <button
                     onClick={() => navigate("/assignments")}
-                    className="mt-5 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                    className="mt-5 px-4 py-2 bg-[#86e57d] text-white rounded hover:bg-[#86e57d] transition"
                 >
                     ← Back to Assignments
                 </button>

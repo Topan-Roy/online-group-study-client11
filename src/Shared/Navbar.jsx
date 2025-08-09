@@ -25,54 +25,55 @@ const Navbar = () => {
     const links = (
         <>
             <li>
-                <NavLink to="/" className={({ isActive }) =>
-                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-                }>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        isActive ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'
+                    }
+                >
                     Home
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/assignments" className={({ isActive }) =>
-                    isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-                }>
+                <NavLink
+                    to="/assignments"
+                    className={({ isActive }) =>
+                        isActive ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'
+                    }
+                >
                     Assignments
                 </NavLink>
             </li>
-
-            {user && (
-                <>
-                    <li>
-                        <NavLink to="/pending-assignments" className={({ isActive }) =>
-                            isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-                        }>
-                            Pending Assignments
-                        </NavLink>
-                    </li>
-                    {/* <li>
-                        <NavLink to="/createAssignment" className={({ isActive }) =>
-                            isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-                        }>
-                            Create Assignment
-                        </NavLink>
-                    </li> */}
-                </>
-            )}
+            <li>
+                <NavLink
+                    to="/pending-assignments"
+                    className={({ isActive }) =>
+                        isActive ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'
+                    }
+                >
+                    Pending Assignments
+                </NavLink>
+            </li>
         </>
     );
 
     return (
-        <header className="bg-gray-100 sticky top-0 z-50 dark:bg-gray-900 dark:text-white shadow-md">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-[#86e57d] dark:bg-[#2e2330] dark:text-white shadow-md">
             <div className="px-4 md:px-20 flex justify-between items-center h-16">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-2">
-                    <span className="text-3xl"><FaBookReader /></span>
+                    <span className="text-3xl">
+                        <FaBookReader />
+                    </span>
                     <h1 className="text-2xl font-bold text-blue-600 dark:text-yellow-300">
                         Study<span className="text-green-700 dark:text-green-300">Hub</span>
                     </h1>
                 </Link>
 
                 {/* Desktop Menu */}
-                <ul className="hidden lg:flex items-center space-x-6 font-medium">{links}</ul>
+                <nav>
+                    <ul className="hidden lg:flex items-center space-x-6 font-medium">{links}</ul>
+                </nav>
 
                 {/* Right side */}
                 <div className="hidden lg:flex items-center gap-4 relative">
@@ -80,7 +81,10 @@ const Navbar = () => {
                         <div className="relative">
                             <img
                                 className="w-10 h-10 rounded-full cursor-pointer border-2 border-transparent hover:border-blue-400"
-                                src={user.photoURL || 'https://i.ibb.co.com/LXQj5Fdb/istockphoto-1337144146-612x612.jpg'}
+                                src={
+                                    user.photoURL ||
+                                    'https://i.ibb.co/LXQj5Fdb/istockphoto-1337144146-612x612.jpg'
+                                }
                                 alt="User"
                                 title={user.displayName}
                                 onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -147,6 +151,7 @@ const Navbar = () => {
                 </button>
             </div>
 
+           
             {/* Mobile Menu */}
             {isMenuOpen && (
                 <div className="lg:hidden px-4 pb-4 space-y-2 font-medium">
@@ -162,6 +167,23 @@ const Navbar = () => {
                                 />
                                 <span>{user.displayName}</span>
                             </div>
+
+                            <Link
+                                to="/my-assignments"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="block px-4 py-2 hover:bg-gray-200 rounded"
+                            >
+                                My Attempts
+                            </Link>
+
+                            <Link
+                                to="/createAssignment"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="block px-4 py-2 hover:bg-gray-200 rounded"
+                            >
+                                Create Assignment
+                            </Link>
+
                             <button
                                 onClick={() => {
                                     setIsMenuOpen(false);
