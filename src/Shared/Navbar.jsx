@@ -4,6 +4,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { useDarkMode } from '../Provider/ThemeContext';
 import { FaSun, FaMoon, FaBookReader } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router';
+import TourNest from './TourNest/TourNest';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -54,16 +55,32 @@ const Navbar = () => {
                     Pending Assignments
                 </NavLink>
             </li>
-            <li>
-                <NavLink
-                    to="/about"
-                    className={({ isActive }) =>
-                        isActive ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'
-                    }
-                >
-                    AboutUs
-                </NavLink>
-            </li>
+            {/* user login থাকলেই দেখাবে */}
+    {user && (
+      <>
+        <li>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'
+            }
+          >
+            About Us
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      </>
+    )}
         </>
     );
 
@@ -71,14 +88,8 @@ const Navbar = () => {
         <header className="fixed top-0 left-0 right-0 z-50 bg-[#86e57d] dark:bg-[#2e2330] dark:text-white shadow-md">
             <div className="px-4 md:px-20 flex justify-between items-center h-16">
                 {/* Logo */}
-                <Link to="/" className="flex items-center gap-2">
-                    <span className="text-3xl">
-                        <FaBookReader />
-                    </span>
-                    <h1 className="text-2xl font-bold text-blue-600 dark:text-yellow-300">
-                        Study<span className="text-green-700 dark:text-green-300">Hub</span>
-                    </h1>
-                </Link>
+                <TourNest></TourNest>
+                
 
                 {/* Desktop Menu */}
                 <nav>

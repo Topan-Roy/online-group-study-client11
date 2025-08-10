@@ -15,6 +15,7 @@ import MyAssignments from '../Pages/Myassignment/MyAssignments';
 import PendingAssignments from '../Pages/PendingAssignments/PendingAssignments';
 import Loading from '../Pages/Loading/Loading';
 import AboutUs from '../Pages/AboutUs/AboutUs';
+import DashboardLayout from '../Layout/DashboardLayout';
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -51,15 +52,23 @@ export const router = createBrowserRouter([
       },
       {
         path: '/pending-assignments',
-        Component:PendingAssignments
+        Component: PendingAssignments
       },
       {
-        path:'about',
-        Component:AboutUs
+        path: 'about',
+        Component: AboutUs
       }
-    
+
     ]
   },
+  {
+    path: "/dashboard",
+    element:<PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
+    children:[
+      
+    ]
+  },
+
   {
     path: "/auth",
     Component: AuthLayout,
