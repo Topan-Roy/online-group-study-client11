@@ -14,6 +14,7 @@ import NotFoundPage from '../Pages/NotFoundPage/NotFoundPage';
 import MyAssignments from '../Pages/Myassignment/MyAssignments';
 import PendingAssignments from '../Pages/PendingAssignments/PendingAssignments';
 import Loading from '../Pages/Loading/Loading';
+import AboutUs from '../Pages/AboutUs/AboutUs';
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -52,7 +53,10 @@ export const router = createBrowserRouter([
         path: '/pending-assignments',
         Component:PendingAssignments
       },
-      
+      {
+        path:'about',
+        Component:AboutUs
+      }
     
     ]
   },

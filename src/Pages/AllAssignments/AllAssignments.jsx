@@ -6,9 +6,10 @@ import { Link, useLoaderData } from 'react-router';
 
 const Assignments = () => {
     const assignmentsData = useLoaderData();
-    const [assignments, setAssignments] = useState(assignmentsData);
-    const [searchTerm, setSearchTerm] = useState("");
     const { user } = useContext(AuthContext);
+
+    const [searchTerm, setSearchTerm] = useState("");
+    const [assignments, setAssignments] = useState(assignmentsData);
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -39,8 +40,11 @@ const Assignments = () => {
         });
     };
 
-    // সার্চ ফিল্টার
-    const filteredAssignments = assignments.filter(a =>
+    // Marks descending order এ sort
+    const sortedAssignments = assignments.slice().sort((a, b) => b.marks - a.marks);
+
+    // Search filter
+    const filteredAssignments = sortedAssignments.filter(a =>
         a.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -72,7 +76,6 @@ const Assignments = () => {
                             />
                             <h2 className="text-xl font-semibold">{assignment.title}</h2>
                             <p>Marks: {assignment.marks}</p>
-                         
 
                             <div className="mt-4 flex gap-2 flex-wrap">
                                 <Link to={`/assignments/${assignment._id}`}>

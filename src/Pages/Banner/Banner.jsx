@@ -8,17 +8,17 @@ import "swiper/css/pagination";
 
 const slides = [
   {
-    img: "https://i.ibb.co/qYWpQz3m/image.jpg",
+    img: "https://i.ibb.co.com/BhvD9pY/pexels-cottonbro-6214718.jpg",
     title: "Join Master Group Study",
     desc: "Collaborate & complete assignments together with StudyHub.",
   },
   {
-    img: "https://i.ibb.co.com/3YC1C0WB/depositphotos-38774981-stock-photo-group-of-students.webp",
+    img: "https://i.ibb.co.com/rKFCnv1H/pexels-yankrukov-8197544.jpg",
     title: "Share Knowledge",
     desc: "Learn, discuss, and grow with your peers online.",
   },
   {
-    img: "https://i.ibb.co.com/TxhMhDY2/focused-study-group-stockcake.jpg",
+    img: "https://i.ibb.co.com/L76bNTL/pexels-yankrukov-8199708.jpg",
     title: "Track Your Progress",
     desc: "Submit assignments, get feedback, and improve continuously.",
   },

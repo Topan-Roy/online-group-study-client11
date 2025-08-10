@@ -54,6 +54,16 @@ const Navbar = () => {
                     Pending Assignments
                 </NavLink>
             </li>
+            <li>
+                <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                        isActive ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'
+                    }
+                >
+                    AboutUs
+                </NavLink>
+            </li>
         </>
     );
 
