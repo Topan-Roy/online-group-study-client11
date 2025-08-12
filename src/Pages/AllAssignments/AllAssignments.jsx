@@ -21,15 +21,14 @@ const Assignments = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await axios.delete(
+                    const { data } = await axios.delete(
                         `https://online-group-study-assignment-serve.vercel.app/assignments/${id}`,
                         { params: { email: user.email } }
                     );
-                    const data = response.data;
 
                     if (data.deletedCount > 0) {
                         Swal.fire('Deleted!', 'Assignment has been deleted.', 'success');
-                        setAssignments(assignments.filter((a) => a._id !== id));
+                        setAssignments(prev => prev.filter((a) => a._id !== id));
                     } else {
                         Swal.fire('Error', data.message || 'Failed to delete', 'error');
                     }
@@ -40,8 +39,8 @@ const Assignments = () => {
         });
     };
 
-    // Marks descending order এ sort
-    const sortedAssignments = assignments.slice().sort((a, b) => b.marks - a.marks);
+    // Marks অনুযায়ী বেশি থেকে কম সাজানো
+    const sortedAssignments = [...assignments].sort((a, b) => b.marks - a.marks);
 
     // Search filter
     const filteredAssignments = sortedAssignments.filter(a =>
@@ -62,34 +61,39 @@ const Assignments = () => {
             </div>
 
             {/* Assignment Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 {filteredAssignments.length > 0 ? (
                     filteredAssignments.map((assignment) => (
                         <div
                             key={assignment._id}
-                            className="card bg-white dark:bg-gray-800 dark:text-white shadow-xl p-4 rounded-xl hover:scale-105 transition-transform duration-300"
+                            className="card bg-white dark:bg-gray-800 dark:text-white shadow-xl rounded-xl flex flex-col"
                         >
-                            <img
-                                src={assignment.photo}
-                                alt={assignment.title}
-                                className="rounded-xl mb-3 h-40 object-cover w-full"
-                            />
-                            <h2 className="text-xl font-semibold">{assignment.title}</h2>
-                            <p>Marks: {assignment.marks}</p>
+                            <div className="flex-1">
+                                <img
+                                    src={assignment.photo}
+                                    alt={assignment.title}
+                                    className="rounded-t-xl mb-3 h-40 object-cover w-full"
+                                />
+                                <div className="px-4 pb-2">
+                                    <h2 className="text-lg font-semibold">{assignment.title}</h2>
+                                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                                        Marks: {assignment.marks}
+                                    </p>
+                                </div>
+                            </div>
 
-                            <div className="mt-4 flex gap-2 flex-wrap">
-                                <Link to={`/assignments/${assignment._id}`}>
-                                    <button className="btn btn-sm bg-[#82c940] text-white">View</button>
+                            {/* Buttons always at bottom */}
+                            <div className="px-4 py-3 flex gap-2 flex-wrap mt-auto">
+                                <Link to={`/assignments/${assignment._id}`} className="flex-1">
+                                    <button className="btn btn-sm bg-[#47e838] text-white w-full">View</button>
                                 </Link>
-
-                                <Link to={`/assignment/update/${assignment._id}`}>
-                                    <button className="btn btn-sm bg-[#d194e1] text-white">Update</button>
+                                <Link to={`/assignment/update/${assignment._id}`} className="flex-1">
+                                    <button className="btn btn-sm bg-[#b212da] text-white w-full">Update</button>
                                 </Link>
-
                                 {assignment.email === user?.email && (
                                     <button
                                         onClick={() => handleDelete(assignment._id)}
-                                        className="btn btn-sm btn-error"
+                                        className="btn btn-sm btn-error flex-1"
                                     >
                                         Delete
                                     </button>

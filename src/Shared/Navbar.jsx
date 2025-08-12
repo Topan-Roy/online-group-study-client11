@@ -85,7 +85,7 @@ const Navbar = () => {
     );
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-[#86e57d] dark:bg-[#2e2330] dark:text-white shadow-md">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-[#47e838] dark:bg-[#2e2330] dark:text-white shadow-md">
             <div className="px-4 md:px-20 flex justify-between items-center h-16">
                 {/* Logo */}
                 <TourNest></TourNest>

@@ -52,7 +52,7 @@ const Banner = () => {
                 <p className="text-lg md:text-2xl mb-6">{slide.desc}</p>
                 <Link
                   to="/assignments"
-                  className="inline-block bg-[#86e57d] hover:bg-[#86e57d] text-white font-semibold px-8 py-3 rounded-xl shadow-lg transition transform hover:scale-105"
+                  className="inline-block bg-[#47e838] hover:bg-[#47e838] text-white font-semibold px-8 py-3 rounded-xl shadow-lg transition transform hover:scale-105"
                 >
                   Get Started
                 </Link>

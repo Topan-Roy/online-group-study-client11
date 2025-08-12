@@ -1,38 +1,61 @@
-import React from "react";
-import { FaCheckCircle } from "react-icons/fa";
+import React, { useState } from "react";
 
-const AboutWhyChooseUs = () => {
-  const features = [
-    "Collaborative Group Study Rooms for effective teamwork",
-    "Real-time Assignment Tracking to never miss deadlines",
-    "User-friendly Interface with Dark/Light Mode toggle",
-    "Secure login system with email and Google authentication",
-    "Easy submission & feedback system for continuous improvement",
-    "24/7 Support and Community-driven Learning",
-  ];
+const faqs = [
+  {
+    question: "How do I join a study group?",
+    answer: "Just register and select a group to join.",
+  },
+  {
+    question: "Can I submit assignments late?",
+    answer: "Late submissions depend on group rules.",
+  },
+  {
+    question: "Is there a mobile app?",
+    answer: "Currently only web app is available.",
+  },
+];
+
+const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="py-16 mt-6 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-8 text-center">
-          Why Choose <span className="text-[#82c940] dark:text-yellow-300">StudyHub?</span>
-        </h2>
-        <p className="text-center max-w-3xl mx-auto mb-12 text-lg">
-          StudyHub is designed to empower students by providing a collaborative and easy-to-use platform for
-          group study and assignment management. Whether you want to track your progress or connect with peers, we have you covered.
-        </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {features.map((feature, idx) => (
-            <div key={idx} className="flex items-start gap-3">
-              <FaCheckCircle className="text-blue-600 dark:text-yellow-300 mt-1" size={24} />
-              <p className="text-gray-700 dark:text-gray-300">{feature}</p>
+    <section className="py-16 mt-5 bg-white dark:bg-gray-900 max-w-7xl mx-auto px-4 rounded-md shadow-md">
+      <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-gray-100">
+        Frequently Asked Questions
+      </h2>
+      {faqs.map(({ question, answer }, i) => (
+        <div
+          key={i}
+          className="mb-4 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm"
+        >
+          <button
+            onClick={() => toggle(i)}
+            className="w-full px-4 py-3 text-left font-semibold bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 flex justify-between items-center focus:outline-none text-gray-900 dark:text-gray-100"
+            aria-expanded={openIndex === i}
+            aria-controls={`faq-panel-${i}`}
+            id={`faq-header-${i}`}
+          >
+            {question}
+            <span className="text-2xl font-bold select-none">
+              {openIndex === i ? "−" : "+"}
+            </span>
+          </button>
+          {openIndex === i && (
+            <div
+              id={`faq-panel-${i}`}
+              role="region"
+              aria-labelledby={`faq-header-${i}`}
+              className="px-4 py-3 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 rounded-b-md"
+            >
+              {answer}
             </div>
-          ))}
+          )}
         </div>
-      </div>
+      ))}
     </section>
   );
 };
 
-export default AboutWhyChooseUs;
+export default FAQ;
